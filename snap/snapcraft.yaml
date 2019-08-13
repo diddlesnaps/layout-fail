@@ -1,0 +1,23 @@
+name: layout-fail
+version: '0'
+summary: layout-fail
+description: layout-fail
+base: core18
+grade: devel
+confinement: strict
+
+parts:
+  mypart:
+    plugin: dump
+    source: files
+    organize:
+      alsa.conf: usr/share/alsa/alsa.conf
+      app.sh: bin/app.sh
+
+layout:
+  /usr/share/alsa/alsa.conf:
+    bind-file: $SNAP/usr/share/alsa/alsa.conf
+
+apps:
+  layout-fail:
+    command: bin/app.sh
